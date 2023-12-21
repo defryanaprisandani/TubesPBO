@@ -1,3 +1,5 @@
+package Model;
+
 public abstract class Siswa {
     private String fullName, alamat;
     private double nilaiUjian;

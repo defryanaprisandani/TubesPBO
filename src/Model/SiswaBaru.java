@@ -1,3 +1,5 @@
+package Model;
+
 public class SiswaBaru extends Siswa {
     private boolean lulus;
 
