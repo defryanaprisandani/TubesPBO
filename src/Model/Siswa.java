@@ -6,6 +6,7 @@ public class Siswa {
     private String gender;
     private String asalSekolah;
     private String address;
+    private String username, password;
 
     public int getId() {
         return id;
@@ -54,6 +55,20 @@ public class Siswa {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
