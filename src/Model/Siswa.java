@@ -1,36 +1,59 @@
 package Model;
 
-public abstract class Siswa {
-    private String fullName, alamat;
-    private double nilaiUjian;
+public class Siswa {
+    private int id;
+    private String firstName, lastName;
+    private String gender;
+    private String asalSekolah;
+    private String address;
 
-    public Siswa(String fullName, String alamat, double nilaiUjian) {
-        this.fullName = fullName;
-        this.alamat = alamat;
-        this.nilaiUjian = nilaiUjian;
+    public int getId() {
+        return id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public String getLastName() {
+        return lastName;
     }
 
-    public double getNilaiUjian() {
-        return nilaiUjian;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setNilaiUjian(double nilaiUjian) {
-        this.nilaiUjian = nilaiUjian;
+    public String getGender() {
+        return gender;
     }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAsalSekolah() {
+        return asalSekolah;
+    }
+
+    public void setAsalSekolah(String asalSekolah) {
+        this.asalSekolah = asalSekolah;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    
 }
