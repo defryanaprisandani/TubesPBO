@@ -37,16 +37,16 @@ public class Database {
     }
     
     // Metode untuk Insert
-    public void insert(String firstname, String lastname, String gender, String asalsekolah, String address, String username, String password) {
+    public void insert(int id, String firstname, String lastname, String gender, String asalsekolah, String address) {
         try {
-            String query = "INSERT INTO siswa (firstname, lastname, gender, asalsekolah, address, user_id) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO siswa (id, firstname, lastname, gender, asalsekolah, address) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, firstname);
-            stmt.setString(2, lastname);
-            stmt.setString(3, gender);
-            stmt.setString(4, asalsekolah);
-            stmt.setString(5, address);
-            stmt.setInt(6, getUserID(username, password));
+            stmt.setInt(1, id);
+            stmt.setString(2, firstname);
+            stmt.setString(3, lastname);
+            stmt.setString(4, gender);
+            stmt.setString(5, asalsekolah);
+            stmt.setString(6, address);
             stmt.executeUpdate();
             System.out.println("Data siswa berhasil ditambahkan!");
         } catch (SQLException e) {
