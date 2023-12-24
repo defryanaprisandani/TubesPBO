@@ -77,6 +77,20 @@ public class Database {
         return siswaList;
     }
 
+    // Metode untuk Update
+    public void updateSiswa(int id, String firstname, String lastname, String gender, String asalsekolah, String address) {
+        try {
+            String query = "UPDATE siswa SET firstname = ? WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, firstname);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+            System.out.println("Data siswa berhasil diperbarui!");
+        } catch (SQLException e) {
+            System.err.println("Gagal memperbarui data siswa: " + e.getMessage());
+        }
+    }
+
     private int getUserID(String username, String password) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
