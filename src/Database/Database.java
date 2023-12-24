@@ -1,6 +1,6 @@
 package Database;
-import Model.*;
 
+import Model.*;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.ArrayList;
