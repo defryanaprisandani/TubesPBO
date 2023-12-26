@@ -1,10 +1,7 @@
 package Program;
 
 public class Home extends javax.swing.JFrame {
-
-    /**
-     * Creates new form SiswaBaru
-     */
+    
     public Home() {
         initComponents();
     }

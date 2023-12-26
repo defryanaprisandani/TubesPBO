@@ -10,8 +10,8 @@ public class Database {
 
     public Database() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtubes", "root14", "pass");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtubes", "root", "");
             System.out.println("Koneksi ke database berhasil!");
         } catch (Exception e) {
             System.err.println("Koneksi ke database gagal: " + e.getMessage());
