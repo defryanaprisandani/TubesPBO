@@ -18,8 +18,7 @@ public class Database {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-        
-    // Metode untuk menutup koneksi
+
     public void closeConnection() {
         try {
             if (conn != null && !conn.isClosed()) {
@@ -31,10 +30,37 @@ public class Database {
         }
     }
 
-    // Metode untuk mendapatkan koneksi
     public Connection getConnection() {
         return conn;
     }
+
+    /* CREATE METHOD */
+    // public void createUser(Siswa siswa){
+    //
+    // }
+
+    // public void createSiswa(Siswa siswa){
+    //
+    // }
+
+    /* READ METHOD */
+    // public void readLogin(Siswa siswa){
+    //
+    // }
+
+    // public void readData(Siswa siswa){
+    //
+    // }
+
+    /* UPDATE METHOD */
+    // public void update(Siswa siswa){
+    //
+    // }
+
+    /* DELETE METHOD */
+    // public void update(Siswa siswa){
+    //
+    // }
     
     // Metode untuk Insert
     public void create(Siswa siswa) {
@@ -74,10 +100,9 @@ public class Database {
     }
 
     // Metode untuk Read
-    public Siswa read(String username) {
+    public Siswa read(int id) {
         try {
-            // Cek apakah id ada
-            String sql = "SELECT * FROM siswa WHERE username = ?";
+            String sql = "SELECT * FROM siswa WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -85,7 +110,6 @@ public class Database {
                 return null;
             }
 
-            // Buat objek Siswa
             Siswa siswa = new Siswa();
             siswa.setId(rs.getInt("id"));
             siswa.setFirstName(rs.getString("firstname"));
