@@ -142,7 +142,7 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (jPasswordField_Pass.getText().equals(jPasswordField_ValidatePass.getText())){
-            username =jTextField_Username.getText();
+            username = jTextField_Username.getText();
             password = jPasswordField_Pass.getText();
             
             // Save To the Database

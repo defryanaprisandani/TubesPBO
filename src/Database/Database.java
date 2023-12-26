@@ -74,10 +74,10 @@ public class Database {
     }
 
     // Metode untuk Read
-    public Siswa read(int id) {
+    public Siswa read(String username) {
         try {
             // Cek apakah id ada
-            String sql = "SELECT * FROM siswa WHERE id = ?";
+            String sql = "SELECT * FROM siswa WHERE username = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

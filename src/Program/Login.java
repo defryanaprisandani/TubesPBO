@@ -1,9 +1,13 @@
 package Program;
+<<<<<<< HEAD
 import Database.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+=======
+import Database.*;
+>>>>>>> ca2bb5e29ac71f460fcf76d607c0ed3c1c778e7b
 
 public class Login extends javax.swing.JFrame {
 
