@@ -1,5 +1,6 @@
 package Database;
 
+import Database.Database;
 import Model.*;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -7,6 +8,7 @@ import java.sql.*;
 
 public class Database {
     Connection conn;
+    private int id;
 
     public Database() {
         try {

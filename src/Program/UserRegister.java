@@ -8,15 +8,15 @@ import java.sql.SQLException;
 import Database.*;
 import Model.*;
 
-public class Register extends javax.swing.JFrame {
+public class UserRegister extends javax.swing.JFrame {
 
     /**
-     * Creates new form Register
+     * Creates new form UserRegister
      */
     public static String username;
     public static String password;
     
-    public Register() {
+    public UserRegister() {
         initComponents();
      
     }
@@ -153,7 +153,7 @@ public class Register extends javax.swing.JFrame {
             lg.setVisible(true);
             lg.pack();
             lg.setLocationRelativeTo(null);
-            lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+            lg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
         }
         else{
             jLabel6.setText("The Password doesn't match");
@@ -189,20 +189,21 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new UserRegister().setVisible(true);
             }
         });
     }

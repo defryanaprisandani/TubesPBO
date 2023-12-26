@@ -11,7 +11,7 @@ public class Main {
         lg.setVisible(true);
         lg.pack();
         lg.setLocationRelativeTo(null);
-        lg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+        lg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
     }
     
 }

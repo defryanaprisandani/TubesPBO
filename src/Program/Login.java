@@ -1,13 +1,13 @@
 package Program;
-<<<<<<< HEAD
+
 import Database.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-=======
-import Database.*;
->>>>>>> ca2bb5e29ac71f460fcf76d607c0ed3c1c778e7b
+
+
+
 
 public class Login extends javax.swing.JFrame {
 
@@ -123,11 +123,11 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
         // TODO add your handling code here:
-        Register rg = new Register();
+        UserRegister rg = new UserRegister();
         rg.setVisible(true);
         rg.pack();
         rg.setLocationRelativeTo(null);
-        rg.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+        rg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
     private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
@@ -148,11 +148,11 @@ public class Login extends javax.swing.JFrame {
 
                 if (rs.next()) {
                     // Login successful
-                    Home hm = new Home();
+                    Registrasi hm = new Registrasi();
                     hm.setVisible(true);
                     hm.pack();
                     hm.setLocationRelativeTo(null);
-                    hm.setDefaultCloseOperation(Register.EXIT_ON_CLOSE);
+                    hm.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
 
                     // Close the current login window
                     this.dispose();
@@ -167,8 +167,6 @@ public class Login extends javax.swing.JFrame {
             database.closeConnection();
     }
       
-        
-        
         
     }//GEN-LAST:event_jButton_LoginActionPerformed
 
