@@ -1,7 +1,6 @@
 package model;
 
 public class Siswa {
-    // private int id;
     private String firstName, lastName;
     private String gender;
     private String asalSekolah;

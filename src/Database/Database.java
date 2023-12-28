@@ -19,15 +19,15 @@ import java.sql.*;
 
 public class Database {
 
-    // Jangan lupa terlebih dahulu mengubah DB_URL, DB_USER, DB_PASS jika tidak sesuai!
-    static final String DB_URL = "jdbc:mysql://localhost:3306/dbtubes";
-    static final String DB_USER = "root";
-    static final String DB_PASS = "";
+    // Jangan lupa terlebih dahulu mengubah DB_URL, DB_USER, DB_PASS jika tidak sesuai
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/dbtubes";
+    private static final String DB_USER = "root";
+    private static final String DB_PASS = "";
 
     private String sql;
-    static PreparedStatement stmt;
-    static Connection conn;
-    static ResultSet rs;
+    private PreparedStatement stmt;
+    private Connection conn;
+    private ResultSet rs;
 
 
     public Database() {
@@ -66,7 +66,7 @@ public class Database {
             stmt.setString(1, username);
             stmt.setString(2, password);
 
-            stmt.executeUpdate();
+            stmt.executeQuery();
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
@@ -118,18 +118,9 @@ public class Database {
         return rs;
     }
 
-    public void readData(Siswa siswa){}
-
-    /* UPDATE METHOD */
-    public void update(Siswa siswa) {}
-
-    /* DELETE METHOD */
-
-
-    // Metode untuk Read (BELUM SELESAI)
     public Siswa read(String username) {
         conn = getConnection();
-        sql = "SELECT * FROM siswa WHERE id = ?";
+        sql = "SELECT * FROM siswa, user_siswa WHERE siswa.id = user_siswa.id";
         Siswa siswa = new Siswa();
 
         try {
@@ -148,34 +139,9 @@ public class Database {
         }
     }
 
-    // Metode untuk delete
-    public void delete(int id) {
-        try {
-            // Cek apakah id ada
-            String sql = "SELECT id FROM siswa WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "ID tidak ada!");
-                return;
-            }
+    /* UPDATE METHOD */
+    public void update(Siswa siswa) {}
 
-            // Delete data user
-            sql = "DELETE FROM user WHERE id = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-            // Delete data siswa
-            sql = "DELETE FROM siswa WHERE id = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+    /* DELETE METHOD */
+    
 }
