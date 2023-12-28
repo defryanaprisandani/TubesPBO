@@ -77,7 +77,7 @@ public class Database {
 
     public void createSiswa(Siswa siswa){
         conn = getConnection();
-        sql = "INSERT INTO siswa (id, firstname, lastname, gender, asalsekolah, address) VALUES (?, ?, ?, ?, ?)";
+        sql = "INSERT INTO siswa (firstname, lastname, gender, asalsekolah, address) VALUES (?, ?, ?, ?, ?)";
 
         try {
             stmt = conn.prepareStatement(sql);
