@@ -1,19 +1,39 @@
 package Database;
 
-import Database.Database;
-import Model.*;
 import javax.swing.JOptionPane;
 import java.sql.*;
-// import java.util.ArrayList;
+
+// Import Package lainnya pada project ini
+import Model.*;
+import Program.*;
+
+/* SEBELUM MELAKUKAN EDIT DAN MENJALANKAN PROGRAM!
+* Program ini membutuhkan database dengan nama tabel sebagai berikut:
+* (Pastikan nama tabel sesuai untuk menghindari error)
+*
+* 1. siswa
+* 2. user_siswa
+ */
 
 public class Database {
-    Connection conn;
+
+
+    // Jangan lupa terlebih dahulu mengubah DB_URL, DB_USER, DB_PASS jika tidak sesuai!
+    static final String DB_URL = "jdbc:mysql://localhost:3306/dbtubes";
+    static final String DB_USER = "root";
+    static final String DB_PASS = "";
+
+    private String sql;
+    static PreparedStatement stmt;
+    static Connection conn;
+    static ResultSet rs;
+
     private int id;
 
     public Database() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtubes", "root", "");
+            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             System.out.println("Koneksi ke database berhasil!");
         } catch (Exception e) {
             System.err.println("Koneksi ke database gagal: " + e.getMessage());
@@ -37,83 +57,78 @@ public class Database {
     }
 
     /* CREATE METHOD */
-    // public void createUser(Siswa siswa){
-    //
-    // }
+    public void createUser(String username, String password){
+        conn = getConnection();
+        sql = "INSERT INTO user_siswa (username, password) VALUES (?, ?)";
 
-    // public void createSiswa(Siswa siswa){
-    //
-    // }
-
-    /* READ METHOD */
-    // public void readLogin(Siswa siswa){
-    //
-    // }
-
-    // public void readData(Siswa siswa){
-    //
-    // }
-
-    /* UPDATE METHOD */
-    // public void update(Siswa siswa){
-    //
-    // }
-
-    /* DELETE METHOD */
-    // public void update(Siswa siswa){
-    //
-    // }
-    
-    // Metode untuk Insert
-    public void create(Siswa siswa) {
         try {
-            // Cek apakah id sudah ada
-            int id = siswa.getId();
-            String sql = "SELECT id FROM siswa WHERE id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "ID sudah ada!");
-                return;
-            }
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
 
-            // Insert data untuk table 'siswa'
-            sql = "INSERT INTO siswa (id, firstname, lastname, gender, asalsekolah, address) VALUES (?, ?, ?, ?, ?, ?)";
-            stmt.setInt(1, id);
-            stmt.setString(2, siswa.getFirstName());
-            stmt.setString(3, siswa.getLastName());
-            stmt.setString(4, siswa.getGender());
-            stmt.setString(5, siswa.getAsalSekolah());
-            stmt.setString(6, siswa.getAddress());
             stmt.executeUpdate();
-
-            // Insert data untuk table 'user'
-            sql = "INSERT INTO user (id, username, password) VALUES (?, ?, ?)";
-            stmt.setInt(1, id);
-            stmt.setString(2, siswa.getUsername());
-            stmt.setString(3, siswa.getPassword());
-            stmt.executeUpdate();
-
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
-        } catch (SQLException e) {
+        } catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
 
-    // Metode untuk Read
-    public Siswa read(int id) {
-        try {
-            String sql = "SELECT * FROM siswa WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                return null;
-            }
+    public void createSiswa(Siswa siswa){
+        conn = getConnection();
+        sql = "INSERT INTO siswa (id, firstname, lastname, gender, asalsekolah, address) VALUES (?, ?, ?, ?, ?)";
 
-            Siswa siswa = new Siswa();
-            siswa.setId(rs.getInt("id"));
+        try {
+            stmt = conn.prepareStatement(sql);
+
+            // Insert data untuk table 'siswa'
+            stmt.setString(1, siswa.getFirstName());
+            stmt.setString(2, siswa.getLastName());
+            stmt.setString(3, siswa.getGender());
+            stmt.setString(4, siswa.getAsalSekolah());
+            stmt.setString(5, siswa.getAddress());
+
+            rs = stmt.executeQuery();
+            JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    /* READ METHOD */
+    public ResultSet validateUser(String username, String password){
+        conn = getConnection();
+        sql = "SELECT * FROM user_siswa WHERE username = ? AND password = ?";
+
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error connecting to the database");
+        }
+
+        return rs;
+    }
+
+    public void readData(Siswa siswa){}
+
+    /* UPDATE METHOD */
+    public void update(Siswa siswa) {}
+
+    /* DELETE METHOD */
+
+
+    // Metode untuk Read (BELUM SELESAI)
+    public Siswa read(String username) {
+        conn = getConnection();
+        sql = "SELECT * FROM siswa WHERE id = ?";
+        Siswa siswa = new Siswa();
+
+        try {
+            stmt = conn.prepareStatement(sql);
+
             siswa.setFirstName(rs.getString("firstname"));
             siswa.setLastName(rs.getString("lastname"));
             siswa.setGender(rs.getString("gender"));
@@ -124,46 +139,6 @@ public class Database {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             return null;
-        }
-    }
-
-    public void update(Siswa siswa) {
-        try {
-            // Cek apakah id ada
-            int id = siswa.getId();
-            String sql = "SELECT id FROM siswa WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "ID tidak ada!");
-                return;
-            }
-
-            // Update data siswa
-            sql = "UPDATE siswa SET firstname = ?, lastname = ?, gender = ?, asalsekolah = ?, address = ? WHERE id = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, siswa.getFirstName());
-            ps.setString(2, siswa.getLastName());
-            ps.setString(3, siswa.getGender());
-            ps.setString(4, siswa.getAsalSekolah());
-            ps.setString(5, siswa.getAddress());
-            ps.setInt(6, id);
-            ps.executeUpdate();
-
-            // Update data user (jika perlu)
-            if (siswa.getUsername() != null && siswa.getPassword() != null) {
-                sql = "UPDATE user SET username = ?, password = ? WHERE id = ?";
-                ps = conn.prepareStatement(sql);
-                ps.setString(1, siswa.getUsername());
-                ps.setString(2, siswa.getPassword());
-                ps.setInt(3, id);
-                ps.executeUpdate();
-            }
-
-            JOptionPane.showMessageDialog(null, "Data berhasil diupdate!");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
         }
     }
 

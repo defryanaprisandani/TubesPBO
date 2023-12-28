@@ -1,10 +1,6 @@
 package Program;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+import java.sql.*;
 import Database.*;
 import Model.*;
 
@@ -140,13 +136,15 @@ public class UserRegister extends javax.swing.JFrame {
 
     private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
         // TODO add your handling code here:
+        Database database = new Database();
+        //Connection conn = database.getConnection();
         
         if (jPasswordField_Pass.getText().equals(jPasswordField_ValidatePass.getText())){
-            username = jTextField_Username.getText();
-            password = jPasswordField_Pass.getText();
+            String username = jTextField_Username.getText();
+            String password = jPasswordField_Pass.getText();
             
             // Save To the Database
-             saveToDatabase(username, password);
+            database.createUser(username, password);
             
             //go to login
             Login lg = new Login();
@@ -160,18 +158,7 @@ public class UserRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_RegisterActionPerformed
     
-    private void saveToDatabase(String username, String password) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtubes", "root14", "pass")) {
-           String query = "INSERT INTO login (username, password) VALUES (?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setString(1, username);
-                preparedStatement.setString(2, password);
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
     /**
      * @param args the command line arguments
      */

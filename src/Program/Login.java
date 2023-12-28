@@ -1,13 +1,7 @@
 package Program;
 
-import Database.Database;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
-
+import Database.*;
+import java.sql.*;
 
 public class Login extends javax.swing.JFrame {
 
@@ -136,35 +130,27 @@ public class Login extends javax.swing.JFrame {
 
         Database database = new Database();
         try {
-            Connection conn = database.getConnection();
 
-            // Query to check if the entered username and password are valid
-            String sql = "SELECT * FROM userr WHERE username = ? AND password = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, enteredUsername);
-                stmt.setString(2, enteredPassword);
+            ResultSet rs = database.validateUser(enteredUsername, enteredPassword);
 
-                ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                // Login successful
+                Registrasi hm = new Registrasi();
+                hm.setVisible(true);
+                hm.pack();
+                hm.setLocationRelativeTo(null);
+                hm.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
 
-                if (rs.next()) {
-                    // Login successful
-                    Registrasi hm = new Registrasi();
-                    hm.setVisible(true);
-                    hm.pack();
-                    hm.setLocationRelativeTo(null);
-                    hm.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
-
-                    // Close the current login window
-                    this.dispose();
-                } else {
-                    jLabel5.setText("Your Password or Username is invalid");
-                }
+                // Close the current login window
+                this.dispose();
+            } else {
+                jLabel5.setText("Your Password or Username is invalid");
             }
         } catch (SQLException e) {
             jLabel5.setText("Error connecting to the database");
-            e.printStackTrace();
         } finally {
             database.closeConnection();
+
     }
       
         

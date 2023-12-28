@@ -1,20 +1,12 @@
 package Model;
 
 public class Siswa {
-    private int id;
+    // private int id;
     private String firstName, lastName;
     private String gender;
     private String asalSekolah;
     private String address;
     private String username, password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
