@@ -1,8 +1,7 @@
-package Program;
+package program;
 
+import database.Database;
 import java.sql.*;
-import Database.*;
-import Model.*;
 
 public class UserRegister extends javax.swing.JFrame {
 

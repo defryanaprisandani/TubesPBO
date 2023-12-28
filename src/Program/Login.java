@@ -1,6 +1,6 @@
-package Program;
+package program;
 
-import Database.*;
+import database.Database;
 import java.sql.*;
 
 public class Login extends javax.swing.JFrame {

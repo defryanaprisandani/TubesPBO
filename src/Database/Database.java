@@ -1,22 +1,23 @@
-package Database;
+package database;
 
+import model.Siswa;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
 // Import Package lainnya pada project ini
-import Model.*;
-import Program.*;
 
-/* SEBELUM MELAKUKAN EDIT DAN MENJALANKAN PROGRAM!
+/* 
+* SEBELUM MELAKUKAN EDIT DAN MENJALANKAN PROGRAM!
+* 
 * Program ini membutuhkan database dengan nama tabel sebagai berikut:
 * (Pastikan nama tabel sesuai untuk menghindari error)
 *
 * 1. siswa
-* 2. user_siswa
- */
+* 2. user_siswa 
+*
+*/
 
 public class Database {
-
 
     // Jangan lupa terlebih dahulu mengubah DB_URL, DB_USER, DB_PASS jika tidak sesuai!
     static final String DB_URL = "jdbc:mysql://localhost:3306/dbtubes";
@@ -28,7 +29,6 @@ public class Database {
     static Connection conn;
     static ResultSet rs;
 
-    private int id;
 
     public Database() {
         try {
