@@ -125,23 +125,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
     private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
-        String enteredUsername = jTextField_UserName.getText();
-        String enteredPassword = new String(jPasswordField_Password.getPassword());
-
         Database database = new Database();
-        try {
+        String username = jTextField_UserName.getText();
+        String password = new String(jPasswordField_Password.getPassword());
 
-            ResultSet rs = database.validateUser(enteredUsername, enteredPassword);
-
+        try (ResultSet rs = database.validateUser(username, password)){
             if (rs.next()) {
-                // Login successful
                 Registrasi hm = new Registrasi();
                 hm.setVisible(true);
                 hm.pack();
                 hm.setLocationRelativeTo(null);
                 hm.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
 
-                // Close the current login window
                 this.dispose();
             } else {
                 jLabel5.setText("Your Password or Username is invalid");
@@ -150,10 +145,7 @@ public class Login extends javax.swing.JFrame {
             jLabel5.setText("Error connecting to the database");
         } finally {
             database.closeConnection();
-
-    }
-      
-        
+        }
     }//GEN-LAST:event_jButton_LoginActionPerformed
 
     /**
