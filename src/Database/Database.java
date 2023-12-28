@@ -56,7 +56,7 @@ public class Database {
         return conn;
     }
 
-    /* CREATE METHOD */
+    /* CREATE METHOD (DONE) */
     public void createUser(String username, String password){
         conn = getConnection();
         sql = "INSERT INTO user_siswa (username, password) VALUES (?, ?)";
@@ -70,6 +70,8 @@ public class Database {
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -91,6 +93,8 @@ public class Database {
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
         } catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
+        } finally {
+            closeConnection();
         }
     }
 
@@ -107,6 +111,8 @@ public class Database {
             rs = stmt.executeQuery();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error connecting to the database");
+        } finally {
+            closeConnection();
         }
 
         return rs;

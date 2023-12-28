@@ -143,8 +143,6 @@ public class Login extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             jLabel5.setText("Error connecting to the database");
-        } finally {
-            database.closeConnection();
         }
     }//GEN-LAST:event_jButton_LoginActionPerformed
 
