@@ -157,5 +157,9 @@ public class Database {
     public void update(Siswa siswa) {}
 
     /* DELETE METHOD */
+
+    public void create(Siswa siswa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
