@@ -1,6 +1,11 @@
 package database;
 
+
 import model.Siswa;
+
+
+import Model.*;
+
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -118,26 +123,35 @@ public class Database {
         return rs;
     }
 
-    public Siswa read(String username) {
+    // Metode untuk Read
+    public Siswa read(int id) {
         conn = getConnection();
-        sql = "SELECT * FROM siswa, user_siswa WHERE siswa.id = user_siswa.id";
+        String sql = "SELECT * FROM siswa WHERE id = ?";
         Siswa siswa = new Siswa();
 
-        try {
-            stmt = conn.prepareStatement(sql);
-
-            siswa.setFirstName(rs.getString("firstname"));
-            siswa.setLastName(rs.getString("lastname"));
-            siswa.setGender(rs.getString("gender"));
-            siswa.setAsalSekolah(rs.getString("asalsekolah"));
-            siswa.setAddress(rs.getString("address"));
-
-            return siswa;
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    siswa.setFirstName(rs.getString("firstname"));
+                    siswa.setLastName(rs.getString("lastname"));
+                    siswa.setGender(rs.getString("gender"));
+                    siswa.setAsalSekolah(rs.getString("asalsekolah"));
+                    siswa.setAddress(rs.getString("address"));
+                    return siswa;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Siswa dengan ID " + id + " tidak ditemukan");
+                    return null;
+                }
+            }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error reading user by ID: " + e.getMessage());
             return null;
+        } finally {
+            closeConnection();
         }
     }
+
 
     /* UPDATE METHOD */
     public void update(Siswa siswa) {}
