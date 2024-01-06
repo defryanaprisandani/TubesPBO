@@ -190,17 +190,6 @@ public class Registrasi extends javax.swing.JFrame {
     String alamat = jTextField_Alamat.getText();
     String gender = jRadioButton_Male.isSelected() ? "Male" : "Female";
     
-//    String firstName = siswa.getFirstName();
-//    String lastName = siswa.getLastName();
-//    String asalSekolah = siswa.getAsalSekolah();
-//    String alamat = siswa.getAddress();
-//    String gender = siswa.getGender();
-//    
-//    jTextField_FirstName.setText(firstName);
-//    jTextField_LastName.setText(lastName);
-//    jTextField_AsalSekolah.setText(asalSekolah);
-//    jTextField_Alamat.setText(alamat);
-//    
 
     // Membuat objek Siswa
     Siswa siswa = new Siswa();
