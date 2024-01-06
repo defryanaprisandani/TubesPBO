@@ -2,7 +2,6 @@ package Program;
 
 import Model.Siswa;
 import javax.swing.JOptionPane;
-
 public class Verifikasi extends javax.swing.JFrame {
 
     /**
@@ -152,7 +151,11 @@ public class Verifikasi extends javax.swing.JFrame {
     }
     
     private void jButton_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SaveActionPerformed
-        // TODO add your handling code here:
+        
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+            System.exit(0);
+           
+
     }//GEN-LAST:event_jButton_SaveActionPerformed
 
     private void jButton_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdateActionPerformed
