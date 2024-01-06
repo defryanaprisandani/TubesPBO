@@ -67,7 +67,7 @@ public class Database {
     /* CREATE METHOD (DONE) */
     public void createUser(String username, String password){
         conn = getConnection();
-        sql = "INSERT INTO User (username, password) VALUES (?, ?)";
+        sql = "INSERT INTO Userr (username, password) VALUES (?, ?)";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class Database {
     /* READ METHOD */
     public ResultSet validateUser(String username, String password){
         conn = getConnection();
-        sql = "SELECT * FROM user_siswa WHERE username = ? AND password = ?";
+        sql = "SELECT * FROM userr WHERE username = ? AND password = ?";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -162,7 +162,7 @@ public Siswa read(int id) {
             }
         }
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error reading user by ID: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error reading userr by ID: " + e.getMessage());
         return null;
     } finally {
         closeConnection();
