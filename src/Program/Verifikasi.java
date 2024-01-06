@@ -168,6 +168,10 @@ public class Verifikasi extends javax.swing.JFrame {
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
         // TODO add your handling code here:
+        int konfirmasi = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus data?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+    
+    if(konfirmasi == JOptionPane.YES_OPTION){
+        // kode untuk menghapus data
         siswa = null;
         jLabel_FirstName.setText("");
         jLabel_LastName.setText("");
@@ -177,6 +181,9 @@ public class Verifikasi extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         setVisible(false);
+    } else {
+        // kode jika tidak jadi menghapus data
+    }
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     /**
