@@ -4,10 +4,11 @@ import Database.Database;
 import Model.Siswa;
 
 public class Registrasi extends javax.swing.JFrame {
-    
+ 
     public Registrasi() {
         initComponents();
     }
+      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,9 +69,19 @@ public class Registrasi extends javax.swing.JFrame {
 
         genderSelect.add(jRadioButton_Male);
         jRadioButton_Male.setText("Male");
+        jRadioButton_Male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_MaleActionPerformed(evt);
+            }
+        });
 
         genderSelect.add(jRadioButton_Female);
         jRadioButton_Female.setText("Female");
+        jRadioButton_Female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_FemaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +172,18 @@ public class Registrasi extends javax.swing.JFrame {
     String asalSekolah = jTextField_AsalSekolah.getText();
     String alamat = jTextField_Alamat.getText();
     String gender = jRadioButton_Male.isSelected() ? "Male" : "Female";
+    
+//    String firstName = siswa.getFirstName();
+//    String lastName = siswa.getLastName();
+//    String asalSekolah = siswa.getAsalSekolah();
+//    String alamat = siswa.getAddress();
+//    String gender = siswa.getGender();
+//    
+//    jTextField_FirstName.setText(firstName);
+//    jTextField_LastName.setText(lastName);
+//    jTextField_AsalSekolah.setText(asalSekolah);
+//    jTextField_Alamat.setText(alamat);
+//    
 
     // Membuat objek Siswa
     Siswa siswa = new Siswa();
@@ -169,7 +192,10 @@ public class Registrasi extends javax.swing.JFrame {
     siswa.setGender(gender);
     siswa.setAsalSekolah(asalSekolah);
     siswa.setAddress(alamat);
-
+    
+    
+    
+    
     // Menyimpan data ke database
     Database database = new Database();
     database.createSiswa(siswa); // Make sure you use createSiswa instead of create
@@ -181,6 +207,22 @@ public class Registrasi extends javax.swing.JFrame {
     verifikasiFrame.setLabels(siswa);
     this.setVisible(false); // Hide the Home frame instead of disposing it   // Hide the Home frame instead of disposing it   // Menutup frame Home    
     }//GEN-LAST:event_jButton_VerifikasiActionPerformed
+
+    private void jRadioButton_MaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_MaleActionPerformed
+//        if (gender.equals("Male")) {
+//            jRadioButton_Male.setSelected(true);
+//        } else {
+//            jRadioButton_Female.setSelected(true);
+//        }
+    }//GEN-LAST:event_jRadioButton_MaleActionPerformed
+
+    private void jRadioButton_FemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_FemaleActionPerformed
+//         if (gender.equals("Male")) {
+//            jRadioButton_Male.setSelected(true);
+//        } else {
+//            jRadioButton_Female.setSelected(true);
+//        }
+    }//GEN-LAST:event_jRadioButton_FemaleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +261,8 @@ public class Registrasi extends javax.swing.JFrame {
             }
         });
     }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup genderSelect;

@@ -26,22 +26,15 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPasswordField_ValidatePass" pref="293" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPasswordField_Pass" alignment="1" min="-2" pref="293" max="-2" attributes="0"/>
-                          <Component id="jTextField_Username" alignment="1" min="-2" pref="293" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="21" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPasswordField_ValidatePass" max="32767" attributes="0"/>
+                  <Component id="jPasswordField_Pass" alignment="0" pref="293" max="32767" attributes="0"/>
+                  <Component id="jTextField_Username" alignment="0" pref="293" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
           </Group>
@@ -136,6 +129,9 @@
     <Component class="javax.swing.JPasswordField" name="jPasswordField_Pass">
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField_ValidatePass">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField_ValidatePassActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton_Register">
       <Properties>
