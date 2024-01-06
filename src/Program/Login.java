@@ -125,11 +125,11 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
         // TODO add your handling code here:
-        Registrasi rg = new Registrasi();
-        rg.setVisible(true);
-        rg.pack();
-        rg.setLocationRelativeTo(null);
-        rg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
+        UserRegister ur = new UserRegister();
+        ur.setVisible(true);
+        ur.pack();
+        ur.setLocationRelativeTo(null);
+        ur.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
     private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
@@ -139,11 +139,11 @@ public class Login extends javax.swing.JFrame {
 
         try (ResultSet rs = database.validateUser(username, password)){
             if (rs.next()) {
-                UserRegister ur = new UserRegister();
-                ur.setVisible(true);
-                ur.pack();
-                ur.setLocationRelativeTo(null);
-                ur.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
+                Registrasi rg = new Registrasi();
+                rg.setVisible(true);
+                rg.pack();
+                rg.setLocationRelativeTo(null);
+                rg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
 
                 this.dispose();
             } else {
