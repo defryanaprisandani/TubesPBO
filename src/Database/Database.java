@@ -68,7 +68,7 @@ public class Database {
     public void createUser(String username, String password){
         conn = getConnection();
 
-        sql = "INSERT INTO userr (username, password) VALUES (?, ?)";
+        sql = "INSERT INTO userr (username, password) VALU123456789 (?, ?)";
 
         sql = "INSERT INTO userr (username, password) VALUES (?, ?)";
 

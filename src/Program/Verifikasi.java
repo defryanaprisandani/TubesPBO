@@ -1,6 +1,7 @@
 package Program;
 
 import Model.Siswa;
+import javax.swing.JOptionPane;
 
 public class Verifikasi extends javax.swing.JFrame {
 
@@ -170,6 +171,9 @@ public class Verifikasi extends javax.swing.JFrame {
         jLabel_Gender.setText("");
         jLabel_AsalSekolah.setText("");
         jLabel_Alamat.setText("");
+        
+        JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
+        setVisible(false);
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     /**

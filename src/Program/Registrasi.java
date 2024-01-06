@@ -210,9 +210,6 @@ public class Registrasi extends javax.swing.JFrame {
     siswa.setAsalSekolah(asalSekolah);
     siswa.setAddress(alamat);
     
-    
-    
-    
     // Menyimpan data ke database
     Database database = new Database();
     database.createSiswa(siswa); // Make sure you use createSiswa instead of create
