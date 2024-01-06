@@ -1,7 +1,7 @@
 
-package program;
+package Program;
 
-import database.Database;
+import Database.Database;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -125,7 +125,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
         // TODO add your handling code here:
-        UserRegister rg = new UserRegister();
+        Registrasi rg = new Registrasi();
         rg.setVisible(true);
         rg.pack();
         rg.setLocationRelativeTo(null);
@@ -139,11 +139,11 @@ public class Login extends javax.swing.JFrame {
 
         try (ResultSet rs = database.validateUser(username, password)){
             if (rs.next()) {
-                Registrasi hm = new Registrasi();
-                hm.setVisible(true);
-                hm.pack();
-                hm.setLocationRelativeTo(null);
-                hm.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
+                UserRegister ur = new UserRegister();
+                ur.setVisible(true);
+                ur.pack();
+                ur.setLocationRelativeTo(null);
+                ur.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
 
                 this.dispose();
             } else {

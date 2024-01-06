@@ -1,5 +1,7 @@
-package program;
-import model.Siswa;
+package Program;
+
+import Model.Siswa;
+
 public class Verifikasi extends javax.swing.JFrame {
 
     /**

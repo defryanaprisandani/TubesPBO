@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Siswa {
     private String firstName, lastName;

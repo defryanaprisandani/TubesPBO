@@ -1,7 +1,7 @@
-package program;
+package Program;
 
-import database.Database;
-import model.Siswa;
+import Database.Database;
+import Model.Siswa;
 
 public class Registrasi extends javax.swing.JFrame {
     

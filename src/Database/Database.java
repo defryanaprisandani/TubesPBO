@@ -1,8 +1,7 @@
-package database;
+package Database;
 
 
-import model.Siswa;
-
+import Model.Siswa;
 
 import Model.*;
 
@@ -124,33 +123,33 @@ public class Database {
     }
 
     // Metode untuk Read
-    public Siswa read(int id) {
-        conn = getConnection();
-        String sql = "SELECT * FROM siswa WHERE id = ?";
-        Siswa siswa = new Siswa();
+public Siswa read(int id) {
+    conn = getConnection();
+    String sql = "SELECT * FROM siswa WHERE id = ?";
+    Siswa siswa = new Siswa();
 
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    siswa.setFirstName(rs.getString("firstname"));
-                    siswa.setLastName(rs.getString("lastname"));
-                    siswa.setGender(rs.getString("gender"));
-                    siswa.setAsalSekolah(rs.getString("asalsekolah"));
-                    siswa.setAddress(rs.getString("address"));
-                    return siswa;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Siswa dengan ID " + id + " tidak ditemukan");
-                    return null;
-                }
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, id);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                siswa.setFirstName(rs.getString("firstname"));
+                siswa.setLastName(rs.getString("lastname"));
+                siswa.setGender(rs.getString("gender"));
+                siswa.setAsalSekolah(rs.getString("asalsekolah"));
+                siswa.setAddress(rs.getString("address"));
+                return siswa;
+            } else {
+                JOptionPane.showMessageDialog(null, "Siswa dengan ID " + id + " tidak ditemukan");
+                return null;
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error reading user by ID: " + e.getMessage());
-            return null;
-        } finally {
-            closeConnection();
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error reading user by ID: " + e.getMessage());
+        return null;
+    } finally {
+        closeConnection();
     }
+}
 
 
     /* UPDATE METHOD */
