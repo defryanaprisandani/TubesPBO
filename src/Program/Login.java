@@ -142,7 +142,7 @@ public class Login extends javax.swing.JFrame {
             Connection conn = database.getConnection();
 
             // Query to check if the entered username and password are valid
-            String sql = "SELECT * FROM userr WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, username);
                 stmt.setString(2, password);

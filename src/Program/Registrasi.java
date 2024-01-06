@@ -164,7 +164,24 @@ public class Registrasi extends javax.swing.JFrame {
     private void jTextField_AlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AlamatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_AlamatActionPerformed
+ 
+     public void setLabels(Siswa siswa) {
+        jTextField_FirstName.setText(siswa.getFirstName());
+        jTextField_LastName.setText(siswa.getLastName());
+        
+        // Menetapkan nilai pada radio button berdasarkan gender dari objek siswa
+        if (siswa.getGender().equals("Male")) {
+            jRadioButton_Male.setSelected(true);
+            jRadioButton_Female.setSelected(false);
+        } else {
+            jRadioButton_Female.setSelected(true);
+            jRadioButton_Male.setSelected(false);
+        }
 
+        jTextField_AsalSekolah.setText(siswa.getAsalSekolah());
+        jTextField_Alamat.setText(siswa.getAddress());
+    }  
+     
     private void jButton_VerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VerifikasiActionPerformed
   
     String firstName = jTextField_FirstName.getText();

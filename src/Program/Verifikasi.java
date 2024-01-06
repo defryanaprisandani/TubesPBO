@@ -6,6 +6,8 @@ public class Verifikasi extends javax.swing.JFrame {
 
     /**
      */
+    private Siswa siswa;
+    
     public Verifikasi() {
         initComponents();
     }
@@ -140,6 +142,7 @@ public class Verifikasi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void setLabels(Siswa siswa) {
+        this.siswa = siswa;
         jLabel_FirstName.setText(siswa.getFirstName());
         jLabel_LastName.setText(siswa.getLastName());
         jLabel_Gender.setText(siswa.getGender());
@@ -152,14 +155,21 @@ public class Verifikasi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_SaveActionPerformed
 
     private void jButton_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdateActionPerformed
-        Registrasi regForm = new Registrasi();
-        regForm.setVisible(true);
-        this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        Registrasi rg = new Registrasi();
+        rg.setLabels(siswa);
+        rg.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jButton_UpdateActionPerformed
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
         // TODO add your handling code here:
+        siswa = null;
+        jLabel_FirstName.setText("");
+        jLabel_LastName.setText("");
+        jLabel_Gender.setText("");
+        jLabel_AsalSekolah.setText("");
+        jLabel_Alamat.setText("");
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     /**
