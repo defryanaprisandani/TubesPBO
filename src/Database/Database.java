@@ -61,19 +61,30 @@ public class Database {
     }
 
     /* CREATE METHOD (DONE) */
+
+    // ... (existing code)
+
+    /* CREATE METHOD (DONE) */
     public void createUser(String username, String password){
         conn = getConnection();
-        sql = "INSERT INTO user_siswa (username, password) VALUES (?, ?)";
+        sql = "INSERT INTO User (username, password) VALUES (?, ?)";
 
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2, password);
 
-            stmt.executeQuery();
-            JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+            // Use executeUpdate for INSERT statements
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
+            }
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace(); // Log the exception
+            JOptionPane.showMessageDialog(null, e.getMessage());
         } finally {
             closeConnection();
         }
@@ -86,17 +97,24 @@ public class Database {
         try {
             stmt = conn.prepareStatement(sql);
 
-            // Insert data untuk table 'siswa'
+            // Insert data for the 'siswa' table
             stmt.setString(1, siswa.getFirstName());
             stmt.setString(2, siswa.getLastName());
             stmt.setString(3, siswa.getGender());
             stmt.setString(4, siswa.getAsalSekolah());
             stmt.setString(5, siswa.getAddress());
 
-            rs = stmt.executeQuery();
-            JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+            // Use executeUpdate for INSERT statements
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
+            }
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace(); // Log the exception
+            JOptionPane.showMessageDialog(null, e.getMessage());
         } finally {
             closeConnection();
         }

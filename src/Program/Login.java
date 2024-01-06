@@ -133,25 +133,43 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
     private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
-        Database database = new Database();
+
         String username = jTextField_UserName.getText();
         String password = new String(jPasswordField_Password.getPassword());
+        
+               Database database = new Database();
+        try {
+            Connection conn = database.getConnection();
 
-        try (ResultSet rs = database.validateUser(username, password)){
-            if (rs.next()) {
-                Registrasi rg = new Registrasi();
-                rg.setVisible(true);
-                rg.pack();
-                rg.setLocationRelativeTo(null);
-                rg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
+            // Query to check if the entered username and password are valid
+            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, username);
+                stmt.setString(2, password);
 
-                this.dispose();
-            } else {
-                jLabel5.setText("Your Password or Username is invalid");
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    Registrasi rg = new Registrasi();
+                    rg.setVisible(true);
+                    rg.pack();
+                    rg.setLocationRelativeTo(null);
+                    rg.setDefaultCloseOperation(UserRegister.EXIT_ON_CLOSE);
+
+                    // Close the current login window
+                    this.dispose();
+                } else {
+                    jLabel5.setText("Your Password or Username is invalid");
+                }
             }
         } catch (SQLException e) {
             jLabel5.setText("Error connecting to the database");
+            e.printStackTrace();
+        } finally {
+            database.closeConnection();
         }
+        
+        
     }//GEN-LAST:event_jButton_LoginActionPerformed
 
     /**
