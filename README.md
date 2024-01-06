@@ -1,7 +1,6 @@
 # TubesPBO
 Repository ini dibuat untuk memenuhi tugas Pemograman Berorientasi Objek
 Aplikasi Pendaftaran Siswa Baru
-
 Selamat datang di Aplikasi Pendaftaran Siswa Baru kami! Aplikasi ini menyederhanakan proses pendaftaran siswa baru dengan menyediakan fitur-fitur kunci, seperti login, registrasi, dan validasi, untuk memastikan keamanan dan keteraturan dalam pendaftaran.
 
 Fitur Utama:
