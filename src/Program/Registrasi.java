@@ -155,30 +155,31 @@ public class Registrasi extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_AlamatActionPerformed
 
     private void jButton_VerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VerifikasiActionPerformed
-        String firstName = jTextField_FirstName.getText();
-        String lastName = jTextField_LastName.getText();
-        String asalSekolah = jTextField_AsalSekolah.getText();
-        String alamat = jTextField_Alamat.getText();
-        String gender = jRadioButton_Male.isSelected() ? "Male" : "Female";
+  
+    String firstName = jTextField_FirstName.getText();
+    String lastName = jTextField_LastName.getText();
+    String asalSekolah = jTextField_AsalSekolah.getText();
+    String alamat = jTextField_Alamat.getText();
+    String gender = jRadioButton_Male.isSelected() ? "Male" : "Female";
 
-        // Membuat objek Siswa
-        Siswa siswa = new Siswa();
-        siswa.setFirstName(firstName);
-        siswa.setLastName(lastName);
-        siswa.setGender(gender);
-        siswa.setAsalSekolah(asalSekolah);
-        siswa.setAddress(alamat);
+    // Membuat objek Siswa
+    Siswa siswa = new Siswa();
+    siswa.setFirstName(firstName);
+    siswa.setLastName(lastName);
+    siswa.setGender(gender);
+    siswa.setAsalSekolah(asalSekolah);
+    siswa.setAddress(alamat);
 
-        // Menyimpan data ke database
-        Database database = new Database();
-        database.create(siswa);
-        database.closeConnection();
+    // Menyimpan data ke database
+    Database database = new Database();
+    database.createSiswa(siswa); // Make sure you use createSiswa instead of create
+    database.closeConnection();
 
-        // Menampilkan data di frame Verifikasi
-        Verifikasi verifikasiFrame = new Verifikasi();
-        verifikasiFrame.setVisible(true);
-        verifikasiFrame.setLabels(siswa);
-        this.dispose(); // Menutup frame Home   
+    // Menampilkan data di frame Verifikasi_1
+    Verifikasi verifikasiFrame = new Verifikasi();
+    verifikasiFrame.setVisible(true);
+    verifikasiFrame.setLabels(siswa);
+    this.setVisible(false); // Hide the Home frame instead of disposing it   // Hide the Home frame instead of disposing it   // Menutup frame Home    
     }//GEN-LAST:event_jButton_VerifikasiActionPerformed
 
     /**
