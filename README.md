@@ -15,3 +15,9 @@ Pilih program studi yang diinginkan untuk memudahkan proses seleksi.
 Validasi Data:
 Sistem validasi otomatis memastikan bahwa data yang dimasukkan benar dan lengkap.
 Verifikasi dokumen secara real-time untuk mempercepat proses pendaftaran.
+
+KONTRIBUSI ANGGOTA :
+1. Defryan Aprisandani 1301213382
+2. Muhammad Alif Ramadhan Mappunna 1301210533 : Mencari modul, ide dan membuat slide
+3. Naufal Alfarisi 1301213452
+4. Ponsri Darmawan 1301213050
